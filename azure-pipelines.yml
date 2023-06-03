@@ -9,17 +9,18 @@ trigger:
 
 pool:
   name: LiquidInitSelfPool
-
 steps:
-- task: Bash@3
+- task: ArchiveFiles@2
   inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      ls -R $(Build.BinariesDirectory)
-
-
-- task: Bash@3
+    rootFolderOrFile: '$(Build.BinariesDirectory)'
+    includeRootFolder: false
+    archiveType: 'tar'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+    verbose: true
+- task: ExtractFiles@1
   inputs:
-    filePath: '/azure/apps/repackdist.sh'
-    arguments: '$(Build.BinariesDirectory)/$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    archiveFilePatterns: '**/*.zip'
+    destinationFolder: '/azure/archive_files'
+    cleanDestinationFolder: true
+    overwriteExistingFiles: true
