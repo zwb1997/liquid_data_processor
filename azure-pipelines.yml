@@ -10,15 +10,6 @@ trigger:
 pool:
   name: LiquidInitSelfPool
 steps:
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'tar'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
-    replaceExistingArchive: true
-    verbose: true
-    tarCompression: gz
 - task: Bash@3
   inputs:
     targetType: 'inline'
