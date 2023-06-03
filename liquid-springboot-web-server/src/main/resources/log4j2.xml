@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout disableAnsi="false"  pattern="[APP] - %d{yyyy-MM-dd HH:mm:ss} [%t] %highlight{%-5level} %c - %msg%n"/>
+        </Console>
+        <RollingFile name="RollingFile"
+                     filename="liquid-springboot-web-server-log/app.log" filePattern="liquid-springboot-web-server-log/app-%d{yyyy-MM-dd HH:mm:ss}.%i.log">
+            <PatternLayout>
+                <pattern >[APP] - %d{yyyy-MM-dd HH:mm:ss} [%t] %highlight{%-5level} %c - %msg%n</pattern>
+            </PatternLayout>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="2 GB"/>
+            </Policies>
+        </RollingFile>
+
+    </Appenders>
+    <Loggers>
+        <Root level="debug">
+            <AppenderRef ref="Console"/>
+            <AppenderRef ref="RollingFile"/>
+        </Root>
+    </Loggers>
+</Configuration>
