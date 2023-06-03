@@ -7,7 +7,7 @@ trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  name: LiquidInitSelfPool
 
 steps:
 - script: echo Hello, world!
