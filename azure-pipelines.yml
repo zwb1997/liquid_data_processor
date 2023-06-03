@@ -20,13 +20,15 @@ steps:
       
       echo '$(Build.BinariesDirectory)'
       echo '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
+
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
-    archiveType: 'tar'
+    archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+    verbose: true
 - task: Bash@3
   inputs:
     filePath: '/azure/apps/repackdist.sh'
