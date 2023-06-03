@@ -18,17 +18,17 @@ steps:
     script: |
       # Write your commands here
       
-      echo '$(Build.BinariesDirectory)'
+      echo '
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      # Write your commands here
+      
+      ls -R $(Build.BinariesDirectory)'
       echo '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
 
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-    verbose: true
+
 - task: Bash@3
   inputs:
     filePath: '/azure/apps/repackdist.sh'
