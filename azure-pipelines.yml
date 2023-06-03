@@ -18,3 +18,8 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId)'
     replaceExistingArchive: true
     verbose: true
+    tarCompression: gz
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: 'ls -R $(Build.ArtifactStagingDirectory)'
