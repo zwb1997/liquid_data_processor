@@ -12,6 +12,7 @@ pool:
 
 steps:
 - task: Bash@3
+
   inputs:
     targetType: 'inline'
     script: |
@@ -26,6 +27,13 @@ steps:
     archiveType: 'tar'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+    
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+    ArtifactName: 'drop'
+    publishLocation: 'FilePath'
+    TargetPath: '/azure/archive_files'
 - task: Bash@3
   inputs:
     filePath: '/azure/apps/repackdist.sh'
