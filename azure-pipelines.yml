@@ -16,7 +16,7 @@ steps:
     targetType: 'inline'
     script: |
       # Write your commands here
-      ls -R $(Build.BinariesDirectory)'
+      ls -R $(Build.BinariesDirectory)
 
 
 - task: Bash@3
