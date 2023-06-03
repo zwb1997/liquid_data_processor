@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 
 trigger:
-- main
+- frontend/samples_0.1
 
 pool:
   name: LiquidInitSelfPool
@@ -12,11 +12,8 @@ pool:
 steps:
 - task: Bash@3
   inputs:
-    targetType: 'inline'
-    script: |
-      # Write your commands here
-      cd /opt/ng/yg_dist_20230603_12H23M34S
-      && ls
+    filePath: '/azure/apps/repackdist.sh'
+      
 
 # - task: ArchiveFiles@2
 #   inputs:
