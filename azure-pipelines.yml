@@ -13,12 +13,3 @@ steps:
 - task: Bash@3
   inputs:
     filePath: '/azure/apps/repackdist.sh'
-      
-
-# - task: ArchiveFiles@2
-#   inputs:
-#     rootFolderOrFile: '$(Build.BinariesDirectory)'
-#     includeRootFolder: true
-#     archiveType: 'zip'
-#     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-#     replaceExistingArchive: true
